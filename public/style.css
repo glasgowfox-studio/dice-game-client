@@ -1,0 +1,70 @@
+.player-block {
+  padding: 20px;
+  text-align: center;
+  width: 250px;
+}
+
+.player-block .score {
+  color: rgb(235, 77, 76);
+  font-size: 6rem;
+}
+
+.player-current-dice {
+  background-color: rgb(235, 77, 76);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.player-current-dice .current-dice {
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem
+}
+
+.active-player {
+  position: relative;
+}
+
+.active-player::before {
+  content: "";
+  display: block;
+  right: 0;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background-color: rgb(235, 77, 76);
+  border-radius: 50%;
+}
+
+.dice {
+  width: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0px 0px 20px 0px rgba(182,182,182,0.88);
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(182,182,182,0.88);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(182,182,182,0.88);
+  position: relative;
+}
+
+.dice-number {
+  text-align: center;
+  color: rgb(235, 77, 76);
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  left: 0;
+}
+
+.dice::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.button-roll {
+  width: 100px;
+  margin-top: 50px;
+}

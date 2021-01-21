@@ -1,0 +1,22 @@
+<template>
+  <div class="col d-flex justify-content-center align-items-center vh-100">
+    <div class="player-block">
+      <h2>PLAYER 2</h2>
+      <h1 class="score">0</h1>
+      <div class="player-current-dice">
+        <div class="title">Current</div>
+        <div class="current-dice">4</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
