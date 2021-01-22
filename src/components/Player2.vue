@@ -22,7 +22,7 @@ export default {
   props: ['currentDice2'],
   data () {
     return {
-      playerName: 'Waiting...'
+      playerName: 'waiting...'
     }
   },
   methods: {
@@ -35,6 +35,9 @@ export default {
   sockets: {
     user2 (payload) {
       this.playerName = payload.name
+    },
+    dcMSG (payload) {
+      if (this.playerName === payload) this.playerName = 'waiting...'
     }
   }
 }
