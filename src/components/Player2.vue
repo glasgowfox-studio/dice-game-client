@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'Player1',
+  name: 'Player2',
   props: ['currentDice2'],
   data () {
     return {
@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     rollTheDice2 () {
-      this.$emit('rollTheDice', {
+      this.$emit('rollTheDice2', {
         payload: this.playerName
       })
     }
