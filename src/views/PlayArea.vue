@@ -94,6 +94,13 @@ export default {
           }
         }
       }
+    },
+    checkCondition () {
+      if (this.attemp1 && this.attemp2) {
+        alert('dua duanya sudah')
+      } else {
+        alert('satu belum')
+      }
     }
   },
   sockets: {
@@ -106,6 +113,9 @@ export default {
     user2 (payload) {
       this.playerName2 = payload.name
     }
+  },
+  updated () {
+    this.checkCondition()
   }
 }
 </script>
