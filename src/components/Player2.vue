@@ -1,7 +1,7 @@
 <template>
   <div class="col d-flex justify-content-center align-items-center vh-100">
     <div class="player-block">
-      <h2>PLAYER 2</h2>
+      <h2>{{ playerName }}</h2>
       <h1 class="score">0</h1>
       <div class="player-current-dice">
         <div class="title">Current</div>
@@ -13,7 +13,17 @@
 
 <script>
 export default {
-
+  name: 'Player2',
+  data () {
+    return {
+      playerName: 'Waiting...'
+    }
+  },
+  sockets: {
+    user2 (payload) {
+      this.playerName = payload.name
+    }
+  }
 }
 </script>
 
