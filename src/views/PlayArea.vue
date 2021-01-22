@@ -1,7 +1,10 @@
 <template>
   <div class="row">
-    <Player1 @rollTheDice="rollTheDice" :currentDice1="currentDice1" />
-    2
+    <Player1
+      @rollTheDice="rollTheDice"
+      :currentDice1="currentDice1"
+      :score1="score1"
+    />
     <img
       class="img1"
       style="width: 10%; height: 10%; align-self: center"
@@ -12,7 +15,11 @@
       style="width: 10%; height: 10%; align-self: center"
       :src="currentDice2"
     />
-    <Player2 @rollTheDice2="rollTheDice2" :currentDice2="currentDice2" />
+    <Player2
+      @rollTheDice2="rollTheDice2"
+      :currentDice2="currentDice2"
+      :score2="score2"
+    />
   </div>
 </template>
 
@@ -26,6 +33,8 @@ export default {
   props: ['passing'],
   data () {
     return {
+      score1: 0,
+      score2: 0,
       randomNumber1: 1,
       randomNumber2: 1,
       currentDice1: 'https://i.imgur.com/E3eD8th.png',
@@ -47,6 +56,7 @@ export default {
       } else {
         if (!this.attemp1) {
           // this.attemp1 = true
+          this.$toastr.success('Opponent turn', 'Announcer', { timeOut: 3000, closeButton: true })
           this.$socket.emit('attemp1', { attemp1: true })
           this.randomNumber1 = Math.floor(Math.random() * 6) + 1
           this.$socket.emit('dice1', { dice: this.randomNumber1 })
@@ -90,6 +100,7 @@ export default {
       } else {
         if (!this.attemp2) {
           // this.attemp2 = true
+          this.$toastr.success('Opponent turn', 'Announcer', { timeOut: 3000, closeButton: true })
           this.$socket.emit('attemp2', { attemp2: true })
           this.randomNumber2 = Math.floor(Math.random() * 6) + 1
           this.$socket.emit('dice2', { dice: this.randomNumber2 })
@@ -131,10 +142,12 @@ export default {
           this.$toastr.success('Draw', 'Announcer', { timeOut: 3000, closeButton: true })
         } else if (this.randomNumber1 < this.randomNumber2) {
           // this.condition = this.player2 + " wins!"
+          this.score2 += 1
           this.$toastr.success(`${this.playerName2} wins!`, 'Announcer', { timeOut: 3000, closeButton: true })
-        } else {
+        } else if (this.randomNumber1 > this.randomNumber2) {
           this.$toastr.success(`${this.playerName1} wins!`, 'Announcer', { timeOut: 3000, closeButton: true })
           // this.condition = this.player1 + " wins!"
+          this.score1 += 1
         }
 
         this.$socket.emit('attemp1', { attemp1: false })

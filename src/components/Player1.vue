@@ -1,10 +1,10 @@
 <template>
   <div class="col d-flex justify-content-center align-items-center vh-100">
     <div class="player-block">
-      <h2>{{ playerName }}</h2>
-      <h1 class="score">0</h1>
+      <!-- <h1 class="score">{{ score1 }}</h1> -->
       <div class="player-current-dice">
-        <div class="title">Current</div>
+        <!-- <div class="title">Current</div> -->
+        <h2 style="color: white">{{ playerName }}</h2>
         <div class="col-12">
           <button
             type="button"
@@ -22,7 +22,7 @@
 <script>
 export default {
   name: 'Player1',
-  props: ['currentDice1'],
+  props: ['currentDice1', 'score1'],
   data () {
     return {
       playerName: 'waiting....'
