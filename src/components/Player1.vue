@@ -16,12 +16,15 @@ export default {
   name: 'Player1',
   data () {
     return {
-      playerName: 'Waiting...'
+      playerName: 'waiting....'
     }
   },
   sockets: {
     user1 (payload) {
       this.playerName = payload.name
+    },
+    dcMSG (payload) {
+      if (this.playerName === payload) this.playerName = 'waiting...'
     }
   }
 }
