@@ -2,7 +2,7 @@
   <div class="row">
     <Player1 />
 
-    <Roll />
+    <RollDice />
 
     <Player2 />
   </div>
@@ -11,7 +11,7 @@
 <script>
 // @ is an alias to /src
 import Player1 from '../components/Player1'
-import Roll from '../components/Roll'
+import RollDice from '../components/Roll'
 import Player2 from '../components/Player2'
 
 export default {
@@ -19,7 +19,7 @@ export default {
   components: {
     Player1,
     Player2,
-    Roll
+    RollDice
   },
   sockets: {
     users (payload) {
