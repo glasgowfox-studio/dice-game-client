@@ -10,7 +10,7 @@ Vue.config.productionTip = false
 
 Vue.use(new VueSocketIO({
   debug: false,
-  connection: 'http://localhost:3000'
+  connection: 'https://dice-game-serv.herokuapp.com/'
 }))
 
 window.toastr = require('toastr')

@@ -1,8 +1,24 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view @passingName="passingName" :passingName="this.passing"/>
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      passing: ''
+    }
+  },
+  methods: {
+    passingName (val) {
+      this.passing = val
+      // console.log(this.passing, '<<< INI DI APP')
+    }
+  }
+}
+</script>
 
 <style>
 #app {

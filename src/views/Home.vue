@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <InsertName />
+    <InsertName @passingName="passingName" />
   </div>
 </template>
 
@@ -11,6 +11,11 @@ export default {
   name: 'Home',
   components: {
     InsertName
+  },
+  methods: {
+    passingName (val) {
+      this.$emit('passingName', val)
+    }
   }
 }
 </script>
