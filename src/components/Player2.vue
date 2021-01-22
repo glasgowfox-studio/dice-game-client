@@ -5,7 +5,12 @@
       <h1 class="score">0</h1>
       <div class="player-current-dice">
         <div class="title">Current</div>
-        <div class="current-dice">4</div>
+        <img class="img1" :src="currentDice2" />
+        <div class="col-12">
+        <button type="button" class="btn button-roll btn-danger" @click="rollTheDice2()">
+          Roll
+        </button>
+        </div>
       </div>
     </div>
   </div>
@@ -13,10 +18,18 @@
 
 <script>
 export default {
-  name: 'Player2',
+  name: 'Player1',
+  props: ['currentDice2'],
   data () {
     return {
       playerName: 'waiting...'
+    }
+  },
+  methods: {
+    rollTheDice2 () {
+      this.$emit('rollTheDice', {
+        payload: this.playerName
+      })
     }
   },
   sockets: {
