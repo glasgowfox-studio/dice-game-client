@@ -23,7 +23,12 @@ export default {
   },
   sockets: {
     users (payload) {
-      console.log(`${payload.name} has been joined the game`)
+      console.log(`${payload} has been joined the game`)
+      // toastr.success(this.$toastr.success('Message', 'Title', options))
+      this.$toastr.success(`${payload} has  joined the game`, 'Heads up!', { timeOut: 3000, closeButton: true })
+    },
+    dcMSG (payload) {
+      this.$toastr.error(`${payload} has left the game`, 'Oh well...', { timeOut: 3000, closeButton: true })
     }
   }
 }
