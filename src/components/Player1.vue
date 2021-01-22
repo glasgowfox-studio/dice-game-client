@@ -7,9 +7,13 @@
         <div class="title">Current</div>
         <img class="img1" :src="currentDice1" />
         <div class="col-12">
-        <button type="button" class="btn button-roll btn-danger" @click="rollTheDice()">
-          Roll
-        </button>
+          <button
+            type="button"
+            class="btn button-roll btn-danger"
+            @click="rollTheDice()"
+          >
+            Roll
+          </button>
         </div>
       </div>
     </div>

@@ -1,13 +1,8 @@
 <template>
   <div class="row">
-    <Player1
-    @rollTheDice='rollTheDice'
-    :currentDice1='currentDice1'/>
+    <Player1 @rollTheDice="rollTheDice" :currentDice1="currentDice1" />
 
-    <Player2
-    @rollTheDice2='rollTheDice2'
-    :currentDice2='currentDice2'/>
-
+    <Player2 @rollTheDice2="rollTheDice2" :currentDice2="currentDice2" />
   </div>
 </template>
 
@@ -21,7 +16,7 @@ export default {
   data () {
     return {
       randomNumber1: 1,
-      randomNumber2: 2,
+      randomNumber2: 1,
       currentDice1: 'https://i.imgur.com/E3eD8th.png',
       currentDice2: 'https://i.imgur.com/E3eD8th.png',
       attemp1: false,
@@ -38,8 +33,10 @@ export default {
     rollTheDice (val) {
       if (val.payload === this.playerName1) {
         if (!this.attemp1) {
-          this.attemp1 = true
+          // this.attemp1 = true
+          this.$socket.emit('attemp1', { attemp: true })
           this.randomNumber1 = Math.floor(Math.random() * 6) + 1
+          this.$socket.emit('dice1', { dice: this.randomNumber1 })
           switch (this.randomNumber1) {
             case 1:
               this.currentDice1 = 'https://i.imgur.com/6DwTTxc.png'
@@ -68,8 +65,10 @@ export default {
     rollTheDice2 (val) {
       if (val.payload === this.playerName2) {
         if (!this.attemp2) {
-          this.attemp2 = true
+          // this.attemp2 = true
+          this.$socket.emit('attemp2', { attemp: true })
           this.randomNumber2 = Math.floor(Math.random() * 6) + 1
+          this.$socket.emit('dice2', { dice: this.randomNumber2 })
           switch (this.randomNumber2) {
             case 1:
               this.currentDice2 = 'https://i.imgur.com/6DwTTxc.png'
@@ -98,6 +97,8 @@ export default {
     checkCondition () {
       if (this.attemp1 && this.attemp2) {
         alert('dua duanya sudah')
+        this.$socket.emit('attemp1', { attemp: false })
+        this.$socket.emit('attemp2', { attemp: false })
       } else {
         alert('satu belum')
       }
@@ -117,6 +118,20 @@ export default {
     },
     user2 (payload) {
       this.playerName2 = payload.name
+    },
+    dice1Out (payload) {
+      this.randomNumber1 = payload.dice
+    },
+    dice2Out (payload) {
+      this.randomNumber2 = payload.dice
+    },
+    attemp1Out (payload) {
+      console.log(payload)
+      this.attemp1 = payload.attemp
+    },
+    attemp2Out (payload) {
+      console.log(payload)
+      this.attemp2 = payload.attemp
     }
   },
   updated () {
