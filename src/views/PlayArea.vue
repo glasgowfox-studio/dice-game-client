@@ -102,6 +102,54 @@ export default {
       } else {
         alert('satu belum')
       }
+    },
+    updateDice1 () {
+      switch (this.randomNumber1) {
+        case 1:
+          this.currentDice1 = 'https://i.imgur.com/6DwTTxc.png'
+          break
+        case 2:
+          this.currentDice1 = 'https://i.imgur.com/g1sbMdg.png'
+          break
+        case 3:
+          this.currentDice1 = 'https://i.imgur.com/vvpdsLv.png'
+          break
+        case 4:
+          this.currentDice1 = 'https://i.imgur.com/Gol5vmT.png'
+          break
+        case 5:
+          this.currentDice1 = 'https://i.imgur.com/bAC4F4P.png'
+          break
+        case 6:
+          this.currentDice1 = 'https://i.imgur.com/E3eD8th.png'
+          break
+        default:
+          break
+      }
+    },
+    updateDice2 () {
+      switch (this.randomNumber2) {
+        case 1:
+          this.currentDice2 = 'https://i.imgur.com/6DwTTxc.png'
+          break
+        case 2:
+          this.currentDice2 = 'https://i.imgur.com/g1sbMdg.png'
+          break
+        case 3:
+          this.currentDice2 = 'https://i.imgur.com/vvpdsLv.png'
+          break
+        case 4:
+          this.currentDice2 = 'https://i.imgur.com/Gol5vmT.png'
+          break
+        case 5:
+          this.currentDice2 = 'https://i.imgur.com/bAC4F4P.png'
+          break
+        case 6:
+          this.currentDice2 = 'https://i.imgur.com/E3eD8th.png'
+          break
+        default:
+          break
+      }
     }
   },
   sockets: {
@@ -110,9 +158,9 @@ export default {
       // toastr.success(this.$toastr.success('Message', 'Title', options))
       this.$toastr.success(`${payload} has  joined the game`, 'Heads up!', { timeOut: 3000, closeButton: true })
     },
-    dcMSG (payload) {
-      this.$toastr.error(`${payload} has left the game`, 'Oh well...', { timeOut: 3000, closeButton: true })
-    },
+    // dcMSG (payload) {
+    //   this.$toastr.error(`${payload} has left the game`, 'Oh well...', { timeOut: 3000, closeButton: true })
+    // },
     user1 (payload) {
       this.playerName1 = payload.name
     },
@@ -136,6 +184,8 @@ export default {
   },
   updated () {
     this.checkCondition()
+    // this.updateDice1()
+    // this.updateDice2()
   }
 }
 </script>
