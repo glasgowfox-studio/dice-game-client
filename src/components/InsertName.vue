@@ -37,6 +37,7 @@ export default {
     login () {
       this.$socket.emit('newUser', { name: this.name })
       this.$router.push({ name: 'PlayArea' })
+      this.$emit('passingName', this.name)
     }
   },
   sockets: {

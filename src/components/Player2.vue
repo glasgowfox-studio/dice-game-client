@@ -5,7 +5,6 @@
       <h1 class="score">0</h1>
       <div class="player-current-dice">
         <div class="title">Current</div>
-        <img class="img1" :src="currentDice2" />
         <div class="col-12">
         <button type="button" class="btn button-roll btn-danger" @click="rollTheDice2()">
           Roll
